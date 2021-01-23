@@ -29,6 +29,7 @@ const renderLists = function (e) {
   let list = {
     id: randomID,
     text: input.value,
+    toggle: false,
   };
   list.li = `
     <div class="list--container" data-id=${list.id}>
@@ -64,13 +65,35 @@ const deleteList = function (e) {
 };
 
 // Move list to Checked list
-const moveToCheckedList = function (e) {
-  const data = +e.target.closest('.list--container').getAttribute('data-id');
+const checkList = function (e) {
+  const btnCheck = e.target;
+  const data = +btnCheck.closest('.list--container').getAttribute('data-id');
 
-  if (!e.target.classList.contains('btn--check')) return;
+  if (!btnCheck.classList.contains('btn--check')) return;
 
-  const li = lists.filter((list) => list.id === data);
-  console.log(li);
+  const filteredList = lists.filter((list) => list.id === data);
+  const active = filteredList[0].toggle ? '' : 'active';
+  console.log(filteredList[0].toggle);
+
+  lists.forEach((list) => {
+    if (list.id === data) {
+      list.li = `
+    <div class="list--container" data-id=${list.id}>
+        <span class="list ${active}">${list.text}</span>
+        <div class="btn--container">
+          <button class="fas fa-check btn btn--check ${active}"></button>
+          <button class="btn btn--remove">X</button>
+        </div>
+    </div>`;
+    }
+  });
+  filteredList[0].toggle === true
+    ? (filteredList[0].toggle = false)
+    : (filteredList[0].toggle = true);
+  console.log(filteredList[0].toggle);
+
+  setLocalStorage();
+  updateDOM();
 };
 
 // Init
@@ -81,4 +104,4 @@ const init = (function () {
 // Event listener
 formEl.addEventListener('submit', renderLists);
 todo.addEventListener('click', deleteList);
-todo.addEventListener('click', moveToCheckedList);
+todo.addEventListener('click', checkList);

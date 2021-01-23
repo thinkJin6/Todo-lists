@@ -96,8 +96,12 @@ section.todo {
   transition: 0.6s;
 }
 
+.list--container .list.active {
+  opacity: 0.3;
+}
+
 .list--container:hover .list {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .list--container button {
@@ -123,6 +127,7 @@ section.todo {
   color: var(--color-secondary-darker);
 }
 
-.active.btn--check {
+.list--container .btn--check.active {
   color: var(--color-primary-darker);
+  opacity: 1;
 }
