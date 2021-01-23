@@ -122,3 +122,7 @@ section.todo {
 .list--container .btn--remove:hover {
   color: var(--color-secondary-darker);
 }
+
+.active.btn--check {
+  color: var(--color-primary-darker);
+}
