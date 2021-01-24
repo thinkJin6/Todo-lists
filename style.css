@@ -104,6 +104,10 @@ section.todo {
   opacity: 0.6;
 }
 
+.list--container .btn--container {
+  display: flex;
+}
+
 .list--container button {
   opacity: 0;
   color: #fff;
@@ -130,4 +134,10 @@ section.todo {
 .list--container .btn--check.active {
   color: var(--color-primary-darker);
   opacity: 1;
+}
+
+@media (max-width: 400px) {
+  .list--container {
+    font-size: 1rem;
+  }
 }
