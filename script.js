@@ -90,7 +90,6 @@ const checkList = function (e) {
   filteredList[0].toggle === true
     ? (filteredList[0].toggle = false)
     : (filteredList[0].toggle = true);
-  console.log(filteredList[0].toggle);
 
   setLocalStorage();
   updateDOM();
